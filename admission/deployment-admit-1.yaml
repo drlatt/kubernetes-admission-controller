@@ -1,0 +1,23 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-admit-ops-team
+  labels:
+    app: nginx-admit-ops-team
+spec:
+  selector:
+    matchLabels:
+      app: nginx-admit-ops-team
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: nginx-admit-ops-team
+        team: ops
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:1.17.4
+          ports:
+            - containerPort: 80

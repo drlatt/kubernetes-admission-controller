@@ -1,0 +1,22 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-admit-no-team
+  labels:
+    app: nginx-admit-no-team
+spec:
+  selector:
+    matchLabels:
+      app: nginx-admit-no-team
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: nginx-admit-no-team
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:1.17.4
+          ports:
+            - containerPort: 80

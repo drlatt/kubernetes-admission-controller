@@ -1,0 +1,23 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-reject-snakeoil-team
+  labels:
+    app: nginx-reject-snakeoil-team
+spec:
+  selector:
+    matchLabels:
+      app: nginx-reject-snakeoil-team
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: nginx-reject-snakeoil-team
+        team: snakeoil
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:1.17.4
+          ports:
+            - containerPort: 80
